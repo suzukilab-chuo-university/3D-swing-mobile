@@ -1,9 +1,9 @@
 const cacheName = "DefaultCompany-3D-swing-mobile-0.1";
 const contentToCache = [
-    "Build/tmp2.loader.js",
-    "Build/tmp2.framework.js",
-    "Build/tmp2.data",
-    "Build/tmp2.wasm",
+    "Build/3D-swing-mobile.loader.js",
+    "Build/3D-swing-mobile.framework.js",
+    "Build/3D-swing-mobile.data",
+    "Build/3D-swing-mobile.wasm",
     "TemplateData/style.css"
 
 ];
