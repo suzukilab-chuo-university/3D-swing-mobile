@@ -55,6 +55,7 @@ public class ObservationCamera : MonoBehaviour {
                 }
                 else if (Input.touches[0].phase == TouchPhase.Moved || Input.touches[1].phase == TouchPhase.Moved)
                 {
+                    
                     if (isPinchStart)
                     {
                         isPinchStart = false;
@@ -63,19 +64,16 @@ public class ObservationCamera : MonoBehaviour {
                         baseCameraPos = mainCamera.transform.localPosition;
                     }
 
+                    float cameraPosX = (Input.touches[0].position.x + Input.touches[1].position.x) / 2f;
+                    float cameraPosY = (Input.touches[0].position.y + Input.touches[1].position.y) / 2f;
+
                     float currentPinchDistance = Vector2.Distance(Input.touches[0].position, Input.touches[1].position);
                     float pinchZoomDistance = (basePinchDistance - currentPinchDistance) * pinchZoomSpeed * 0.05f;
                     float cameraPosZ = baseCameraPos.z - pinchZoomDistance;
-                    if (cameraPosZ < 0f)
-                    {
-                        cameraPosZ = 0f;
-                    }
-                    else if (cameraPosZ > 5f)
-                    {
-                        cameraPosZ = 5f;
-                    }
+                    if (cameraPosZ < 0f) cameraPosZ = 0f;
+                    else if (cameraPosZ > 5f) cameraPosZ = 5f;
 
-                    mainCamera.transform.localPosition = new Vector3(mainCamera.transform.localPosition.x, mainCamera.transform.localPosition.y, cameraPosZ);
+                    mainCamera.transform.localPosition = new Vector3(cameraPosX, cameraPosY, cameraPosZ);
                 }
 
                 isMouseDown = false;
