@@ -526,6 +526,7 @@ MonoBehaviour:
   isAutoRotate: 1
   cameraAngleRange: 50
   swipeTurnSpeed: 20
+  pinchZoomSpeed: 1
 --- !u!1 &896019087
 GameObject:
   m_ObjectHideFlags: 0

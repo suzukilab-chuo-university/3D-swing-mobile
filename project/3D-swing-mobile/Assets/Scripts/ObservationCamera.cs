@@ -5,7 +5,6 @@ public class ObservationCamera : MonoBehaviour {
     public bool isAutoRotate = true; // 最初に自動で回転させておくかのフラグ
     public float cameraAngleRange = 50.0f;
     public float swipeTurnSpeed = 20.0f; // スワイプで回転するときの回転スピード
-    public float pinchZoomSpeed = 1.0f; // ピンチするときのズームスピード
 
     private float autoRotateSpeed = 0.25f; // 自動で回転させるときの回転スピード
     private Vector3 baseMousePos; // 基準となるタップの座標
@@ -14,6 +13,7 @@ public class ObservationCamera : MonoBehaviour {
     private float maxCameraAngle; // カメラの最大角度
     private float beforeTime;     // スイングを始めた時刻
 
+    private float pinchZoomSpeed = 1f; // ピンチするときのズームスピード
     private bool isPinchStart = true; // ピンチスタートしたかを管理するフラグ
     private float basePinchZoomDistanceX = 0f; // ズームの基準となるピンチの距離 x
     private float basePinchZoomDistanceY = 0f; // ズームの基準となるピンチの距離 y
@@ -114,7 +114,7 @@ public class ObservationCamera : MonoBehaviour {
     // スイングのボタンが押されたら
     public void OnClickAuto()
     {
-        this.transform.localPosition = new Vector3(0f, 0f, 0f);
+        mainCamera.transform.localPosition = new Vector3(0f, 0f, 0f);
         this.transform.eulerAngles = new Vector3(0f, 0f, 0f);
         beforeTime = Time.time;
         isAutoRotate = true;
