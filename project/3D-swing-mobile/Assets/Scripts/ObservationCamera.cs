@@ -5,7 +5,7 @@ public class ObservationCamera : MonoBehaviour {
     public bool isAutoRotate = true; // 最初に自動で回転させておくかのフラグ
     public float cameraAngleRange = 50.0f;
     public float swipeTurnSpeed = 20.0f; // スワイプで回転するときの回転スピード
-    public float pinchZoomSpeed = 10.0f; // ピンチするときのズームスピード
+    public float pinchZoomSpeed = 1.0f; // ピンチするときのズームスピード
 
     private float autoRotateSpeed = 0.25f; // 自動で回転させるときの回転スピード
     private Vector3 baseMousePos; // 基準となるタップの座標
