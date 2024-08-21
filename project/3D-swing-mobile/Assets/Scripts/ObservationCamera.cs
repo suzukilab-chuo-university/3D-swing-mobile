@@ -15,8 +15,6 @@ public class ObservationCamera : MonoBehaviour {
 
     private float pinchZoomSpeed = 1f; // ピンチするときのズームスピード
     private bool isPinchStart = true; // ピンチスタートしたかを管理するフラグ
-    private float basePinchZoomDistanceX = 0f; // ズームの基準となるピンチの距離 x
-    private float basePinchZoomDistanceY = 0f; // ズームの基準となるピンチの距離 y
     private float basePinchDistance = 0f; //  // 基準となるピンチ時の指と指の距離
     private Vector3 baseCameraPos; // 基準となるカメラの座標
 
@@ -64,16 +62,14 @@ public class ObservationCamera : MonoBehaviour {
                         baseCameraPos = mainCamera.transform.localPosition;
                     }
 
-                    float cameraPosX = (Input.touches[0].position.x + Input.touches[1].position.x) / 2f;
-                    float cameraPosY = (Input.touches[0].position.y + Input.touches[1].position.y) / 2f;
-
                     float currentPinchDistance = Vector2.Distance(Input.touches[0].position, Input.touches[1].position);
                     float pinchZoomDistance = (basePinchDistance - currentPinchDistance) * pinchZoomSpeed * 0.05f;
                     float cameraPosZ = baseCameraPos.z - pinchZoomDistance;
+
                     if (cameraPosZ < 0f) cameraPosZ = 0f;
                     else if (cameraPosZ > 5f) cameraPosZ = 5f;
 
-                    mainCamera.transform.localPosition = new Vector3(cameraPosX, cameraPosY, cameraPosZ);
+                    mainCamera.transform.localPosition = new Vector3(0, 0, cameraPosZ);
                 }
 
                 isMouseDown = false;
